@@ -77,6 +77,18 @@ public class TennisGameTest {
 		//Assert
 		assertEquals("Player 2 did not win.", "player2 wins", score);
 	}
+
+	@Test
+	public void testTennisGame_ScoreTied() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		//Act
+		game.player1Scored();
+		game.player2Scored();
+		String score = game.getScore();
+		//Assert
+		assertEquals("The game was not tied.", "15 - 15", score);
+	}
 	
 	@Test
 	public void testTennisGame_EachPlayerWin4Points_Score_Deuce() throws TennisGameException {
