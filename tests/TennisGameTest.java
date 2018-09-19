@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -48,6 +49,31 @@ public class TennisGameTest {
 		String score = game.getScore();
 		//Assert
 		assertEquals("Player 2 score did not go up.", "love - 15", score);
+	}
+
+	@Test
+	public void testTennisGame_30Points() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		game.player1Scored();
+		game.player1Scored();
+		//Act
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 1 score is not 30.", "30 - love", score);
+	}
+
+	@Test
+	public void testTennisGame_40Points() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		game.player1Scored();
+		game.player1Scored();
+		game.player1Scored();
+		//Act
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 1 score is not 40.", "40 - love", score);
 	}
 
 	@Test
