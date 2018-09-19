@@ -1,4 +1,3 @@
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,18 +18,68 @@ public class TennisGameTest {
 // "player2 has advantage"
 // "player1 wins"
 // "player2 wins"
-	@Ignore
+	@Test
 	public void testTennisGame_Start() {
 		//Arrange
 		TennisGame game = new TennisGame();
 		//Act
 		String score = game.getScore() ;
 		// Assert
-		assertEquals("Initial score incorrect", "love - love", score);		
+		assertEquals("Initial score incorrect", "love - love", score);
+	}
+
+	@Test
+	public void testTennisGame_Player2ScoredPoint() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		//Act
+		game.player2Scored();
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 2 score did not go up.", "love - 15", score);
+	}
+
+	@Test
+	public void testTennisGame_Player1ScoredPoint() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		//Act
+		game.player1Scored();
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 1 score did not go up.", "15 - love", score);
+	}
+
+	@Test
+	public void testTennisGame_Player1Wins() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		//Act
+		game.player1Scored();
+		game.player1Scored();
+		game.player1Scored();
+		game.player1Scored();
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 1 did not win.", "player1 wins", score);
+	}
+
+	@Test
+	public void testTennisGame_Player2Wins() throws TennisGameException {
+		//Setup
+		TennisGame game = new TennisGame();
+		//Act
+		game.player2Scored();
+		game.player2Scored();
+		game.player2Scored();
+		game.player2Scored();
+		String score = game.getScore();
+		//Assert
+		assertEquals("Player 2 did not win.", "player2 wins", score);
 	}
 	
 	@Test
-	public void testTennisGame_EahcPlayerWin4Points_Score_Deuce() throws TennisGameException {
+	public void testTennisGame_EachPlayerWin4Points_Score_Deuce() throws TennisGameException {
 		//Arrange
 		TennisGame game = new TennisGame();
 		
@@ -61,6 +110,7 @@ public class TennisGameTest {
 		game.player1Scored();
 		//Act
 		// This statement should cause an exception
-		game.player1Scored();			
-	}		
+		game.player1Scored();
+	}
+
 }
