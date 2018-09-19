@@ -1,5 +1,4 @@
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -138,6 +137,22 @@ public class TennisGameTest {
         //Assert
         assertEquals("Player 2 did not have advantage.", "player2 has advantage", score);
     }
+
+    @Test
+	public void testTennisGame_40PointsDeuce() throws TennisGameException {
+		//Setup
+        game.player1Scored();
+        game.player1Scored();
+        game.player1Scored();
+
+        game.player2Scored();
+        game.player2Scored();
+        game.player2Scored();
+        //Act
+        String score = game.getScore();
+        //Assert
+        assertEquals("The game score was not deuce.", "deuce", score);
+	}
 
 	@Test
 	public void testTennisGame_EachPlayerWin4Points_Score_Deuce() throws TennisGameException {
