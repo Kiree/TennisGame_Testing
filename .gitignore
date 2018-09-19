@@ -1,0 +1,8 @@
+## IDE Specific
+.idea
+.settings
+.project
+.classpath
+
+## Excludes the generated files
+bin/

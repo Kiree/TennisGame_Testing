@@ -11,7 +11,7 @@ public class TennisGame {
 	public TennisGame() {
 		player1Points = 0;
 		player2Points = 0;
-		gameEnded = false ;
+		gameEnded = false;
 	}
 	
 	private void checkGameEnded() {
@@ -52,40 +52,30 @@ public class TennisGame {
 	}
 	
 	public String getScore() {
-// Here is the format of the scores:
-// "love - love"
-// "15 - 15"
-// "30 - 30"
-// "deuce"
-// "15 - love", "love - 15"
-// "30 - love", "love - 30"
-// "40 - love", "love - 40"
-// "30 - 15", "15 - 30"
-// "40 - 15", "15 - 40"
-// "player1 has advantage"
-// "player2 has advantage"
-// "player1 wins"
-// "player2 wins"
-		
 			String player1Score = getScore(player1Points);
 			String player2Score = getScore(player2Points);
 			
 			if (gameEnded) {
-				if (player1Points > player2Points)
+				if (player1Points > player2Points) {
 					return "player1 wins";
-				else
+				} else {
 					return "player2 wins";
+				}
 			}
 			
-			if (player1Points >= 4 && player1Points == player2Points)
+			if (player1Points >= 4 && player1Points == player2Points) {
 				return "deuce";
+			}
+
 			
-			if (player1Points >= 4 && player1Points - player2Points == 1)
+			if (player1Points >= 4 && player1Points - player2Points == 1) {
 				return "player1 has advantage";
-			
-			if (player2Points > 4 && player2Points - player1Points == 1)
-				return "player2 has advantage";							
-			
+			}
+
+			if (player2Points > 4 && player2Points - player1Points == 1) {
+				return "player2 has advantage";
+			}
+
 			return  player2Score + " - " + player1Score ;
 	}
 }
